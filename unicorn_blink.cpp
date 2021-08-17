@@ -12,6 +12,14 @@
  * will update this to add game of life patterns to the unicorn, rather than random changing colours
  * 
  * but it works, which is something
+ * 
+ * directory struture is:
+ * 
+ * ~/pico
+ * ~/pico/pico-sdk
+ * ~/pico/pimoroni-pico
+ * ~/pico/project_directory
+ * 
  */
 
 #include <stdio.h>
@@ -31,7 +39,10 @@ int main()
 {
     pico_unicorn.init();
     pico_unicorn.clear();
-    
+
+    // does nothing particularly useful or pretty at the moment
+    // makes each pixel random from 0 - 154 rgb and changes after a random period of time
+
     while(1) {
         for(int row=0;row<=pico_unicorn.HEIGHT;row++) {
             for(int col=0;col<=pico_unicorn.WIDTH;col++) {
