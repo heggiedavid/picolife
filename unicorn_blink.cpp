@@ -1,3 +1,19 @@
+/**
+ * unicorn_blink
+ * 
+ * initial tests of ...
+ *  setting up a new project that isn't one of the pico-examples
+ *  including third-party (pimoroni) libraries
+ *  using picoprobe to debug / upload the elf to the pico
+ *  using the unicorn pack on a pimoroni omnibus
+ * 
+ * ... that's probably enough for now
+ * 
+ * will update this to add game of life patterns to the unicorn, rather than random changing colours
+ * 
+ * but it works, which is something
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
