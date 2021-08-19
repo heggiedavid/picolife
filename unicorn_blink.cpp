@@ -86,8 +86,24 @@ void nextGeneration(bool grid[GRID_HEIGHT][GRID_WIDTH]) {
     }
 }
 
+void generateRandomGrid(bool grid[GRID_HEIGHT][GRID_WIDTH], int threshold = 8)
+{
+    for(int row=0;row<GRID_HEIGHT;row++) {
+        for(int col=0;col<GRID_WIDTH;col++) {
+            int key = rand() % 10;
+            if(key > threshold) {
+                grid[row][col] = 1;
+            } else {
+                grid[row][col] = 0;
+            }
+        }
+    }
+}
+
 int main()
 {
+    int threshold = 8;
+
     srand(time(0));
     pico_unicorn.init();
 
@@ -97,7 +113,7 @@ int main()
     for(int row=0;row<GRID_HEIGHT;row++) {
         for(int col=0;col<GRID_WIDTH;col++) {
             int key = rand() % 10;
-            if(key > 8) {
+            if(key > threshold) {
                 grid[row][col] = 1;
             } else {
                 grid[row][col] = 0;
@@ -108,6 +124,31 @@ int main()
     pico_unicorn.clear();
 
     while(1) {
+        if(pico_unicorn.is_pressed(pico_unicorn.A)) {
+            pico_unicorn.clear();
+            generateRandomGrid(grid), threshold;
+        }
+
+        if(pico_unicorn.is_pressed(pico_unicorn.X)) {
+            pico_unicorn.clear();
+            threshold++;
+            if(threshold>10) {
+                threshold = 10;
+            }
+
+            generateRandomGrid(grid), threshold;
+        }
+
+        if(pico_unicorn.is_pressed(pico_unicorn.Y)) {
+            pico_unicorn.clear();
+            threshold--;
+            if(threshold<1) {
+                threshold = 1;
+            }
+            
+            generateRandomGrid(grid), threshold;
+        }
+
         displayGrid(grid);
         nextGeneration(grid);
         sleep_ms(120);
