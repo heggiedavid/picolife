@@ -126,7 +126,7 @@ int main()
     while(1) {
         if(pico_unicorn.is_pressed(pico_unicorn.A)) {
             pico_unicorn.clear();
-            generateRandomGrid(grid), threshold;
+            generateRandomGrid(grid, threshold);
         }
 
         if(pico_unicorn.is_pressed(pico_unicorn.X)) {
@@ -136,7 +136,7 @@ int main()
                 threshold = 10;
             }
 
-            generateRandomGrid(grid), threshold;
+            generateRandomGrid(grid, threshold);
         }
 
         if(pico_unicorn.is_pressed(pico_unicorn.Y)) {
@@ -146,7 +146,7 @@ int main()
                 threshold = 1;
             }
             
-            generateRandomGrid(grid), threshold;
+            generateRandomGrid(grid, threshold);
         }
 
         displayGrid(grid);
