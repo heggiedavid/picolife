@@ -8,7 +8,7 @@ project(pico_life)
 pico_sdk_init()
 
 add_executable(pico_life
-	unicorn_blink.cpp
+	pico_life.cpp
 )
 
 pico_add_extra_outputs(pico_life)
