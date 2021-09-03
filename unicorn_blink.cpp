@@ -1,10 +1,3 @@
-/**
- * unicorn_blink
- * 
- * modified into a simple game of life implementation
- * 
- */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -31,7 +24,7 @@ void displayGrid(bool grid[GRID_HEIGHT][GRID_WIDTH])
             if(grid[row][col]) {
                 pico_unicorn.set_pixel(col, row, rand() % 100 + 55, rand() % 100 + 55, rand() % 100 + 55);
             } else {
-                pico_unicorn.set_pixel(col, row, 0,0,0);
+                pico_unicorn.set_pixel(col, row, 0, 0, 0);
             }
         }
     }
@@ -40,7 +33,8 @@ void displayGrid(bool grid[GRID_HEIGHT][GRID_WIDTH])
 /**
  * Copies one array into another - probably a better more C++y way of doing this
  */
-void copyGrid (bool grid[GRID_HEIGHT][GRID_WIDTH],bool grid2[GRID_HEIGHT][GRID_WIDTH]) {
+void copyGrid (bool grid[GRID_HEIGHT][GRID_WIDTH], bool grid2[GRID_HEIGHT][GRID_WIDTH])
+{
     for(int row=0;row<GRID_HEIGHT;row++) {
         for(int col=0;col<GRID_WIDTH;col++) {
             grid2[row][col] = grid[row][col];
@@ -61,8 +55,6 @@ void nextGeneration(bool grid[GRID_HEIGHT][GRID_WIDTH]) {
 
     for(int row=0;row<GRID_HEIGHT;row++) {
         for(int col=0;col<GRID_WIDTH;col++) {
-            
-            // get live neighbours
             int livingNeighbours = 0;
             for(int i=-1;i<2;i++) {
                 for(int j=-1;j<2;j++) {
@@ -74,7 +66,6 @@ void nextGeneration(bool grid[GRID_HEIGHT][GRID_WIDTH]) {
                 }
             }
 
-            // update grid from rules
             if(livingNeighbours < 2) {
                 grid[row][col] = false;
             } else if(livingNeighbours == 3) {
@@ -109,7 +100,6 @@ int main()
 
     bool grid[GRID_HEIGHT][GRID_WIDTH] = {};
 
-    // Randomly generate starting grid - configurable percentage of living:dead
     for(int row=0;row<GRID_HEIGHT;row++) {
         for(int col=0;col<GRID_WIDTH;col++) {
             int key = rand() % 10;
